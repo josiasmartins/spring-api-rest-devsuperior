@@ -1,11 +1,19 @@
 package com.devsuperior.apisuperior.entity;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "tb_product")
 public class Product {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private Double price;
 
+    @ManyToOne
+    @JoinColumn(name = "department_id")
     private Department department;
 
     public Product() {
